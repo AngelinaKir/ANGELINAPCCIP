@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивный Layout с книжной карточкой и формой</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .item {
+            text-align: center;
+            border: 3px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .flex-row {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        /* Базовые стили для всех блоков */
+        .item1 { 
+            height: 100px; 
+            border-color: rgb(0, 0, 0); 
+            background-color: #ffffff; 
+        }
+        .item2, .item3, .item6 { 
+            min-height: 500px; 
+        }
+        .item4, .item5, .item8, .item9 { 
+            min-height: 300px; 
+        }
+        .item7 { 
+            min-height: 500px; 
+        }
+        .item10 { 
+            height: 100px; 
+            border-color: rgb(0, 0, 0); 
+            background-color: #ffffff; 
+        }
+
+        /* Цвета границ */
+        .item2 { border-color: rgb(255, 204, 0); }
+        .item3 { border-color: rgb(60, 255, 0); }
+        .item4 { border-color: rgb(0, 238, 255); }
+        .item5 { border-color: rgb(0, 38, 255); }
+        .item6 { border-color: rgb(212, 0, 255); }
+        .item7 { border-color: rgb(195, 0, 255); }
+        .item8 { border-color: rgb(255, 0, 153); }
+        .item9 { border-color: rgb(255, 0, 0); }
+
+        /* Стили для книжной карточки */
+        .book-card-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .book-card {
+            width: 100%;
+            max-width: 300px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+        
+        .book-image-container {
+            position: relative;
+            height: 0;
+            padding-top: 140%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .book-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+            background-color: white;
+            padding: 20px;
+        }
+        
+        .book-card:hover .book-image {
+            transform: scale(1.03);
+        }
+        
+        .novelty-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #ff5e62 0%, #ff9966 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-transform: uppercase;
+        }
+        
+        .book-content {
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .book-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2d3436;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 44px;
+        }
+        
+        .book-subtitle {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #636e72;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 40px;
+        }
+        
+        .book-authors {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-style: italic;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #2d3436;
+        }
+        
+        .check-icon {
+            color: #00b894;
+            font-size: 18px;
+        }
+        
+        .discount {
+            color: #e17055;
+            font-weight: bold;
+            background-color: #ffeaa7;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        
+        .bonus {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: #636e72;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #dfe6e9;
+        }
+        
+        .crystal {
+            color: #0984e3;
+            font-weight: bold;
+        }
+        
+        .crystal:before {
+            content: "✦";
+            margin-right: 3px;
+        }
+
+        /* Стили для формы регистрации */
+        .form-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .form-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .form-label {
+            width: 150px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .form-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .select-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+        }
+        
+        .textarea {
+            flex: 1;
+            min-width: 200px;
+            height: 80px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .cancel-button {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Мобильная версия (до 576px) */
+        @media (max-width: 576px) {
+            .item1, .item10 {
+                height: 70px;
+            }
+            
+            .item2, .item3, .item4, .item5, 
+            .item6, .item7, .item8, .item9 {
+                width: 100%;
+                min-height: auto;
+                height: auto;
+                padding: 15px;
+            }
+            
+            .flex-row {
+                flex-direction: column;
+            }
+            
+            .book-card {
+                max-width: 280px;
+            }
+            
+            .book-image-container {
+                padding-top: 150%;
+            }
+            
+            .book-content {
+                padding: 15px;
+            }
+            
+            .book-title {
+                font-size: 16px;
+                min-height: 38px;
+            }
+            
+            .form-container {
+                padding: 15px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .form-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .form-input,
+            .select-box,
+            .textarea {
+                width: 100%;
+            }
+            
+            .radio-group,
+            .checkbox-group {
+                flex-direction: column;
+                gap: 5px;
+                align-items: flex-start;
+            }
+            
+            .button {
+                width: 100%;
+            }
+        }
+
+        /* Планшетная версия (577px - 992px) */
+        @media (min-width: 577px) and (max-width: 992px) {
+            .item1, .item10 {
+                height: 80px;
+            }
+            
+            .row1 .item6, 
+            .row1 .item2, 
+            .row1 .item3 {
+                width: 33.33%;
+                min-height: 400px;
+            }
+            
+            .item7 {
+                min-height: 300px;
+            }
+            
+            .row2 .item4, 
+            .row2 .item5, 
+            .row2 .item8, 
+            .row2 .item9 {
+                width: 50%;
+                min-height: 250px;
+            }
+            
+            .book-card {
+                max-width: 260px;
+            }
+            
+            .form-container {
+                max-width: 500px;
+                padding: 15px;
+            }
+            
+            .form-row {
+                flex-direction: row;
+            }
+            
+            .form-label {
+                width: 120px;
+            }
+            
+            .radio-group,
+            .checkbox-group {
+                flex-direction: row;
+                gap: 15px;
+            }
+        }
+
+        /* Десктопная версия (993px и больше) */
+        @media (min-width: 993px) {
+            .item1, .item10 {
+                height: 100px;
+            }
+            
+            .row1 .item6, 
+            .row1 .item2, 
+            .row1 .item3 {
+                width: 33.33%;
+                min-height: 500px;
+            }
+            
+            .item7 {
+                min-height: 400px;
+            }
+            
+            .row2 .item4, 
+            .row2 .item5, 
+            .row2 .item8, 
+            .row2 .item9 {
+                width: 25%;
+                min-height: 300px;
+            }
+            
+            .book-card {
+                max-width: 280px;
+            }
+            
+            .book-image-container {
+                padding-top: 130%;
+            }
+            
+            .form-container {
+                max-width: 600px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item item1">Шапка сайта</div>
+        <div class="flex-row row1">
+            <div class="item item6">6</div>
+            <div class="item item2">
+                <div class="book-card-container">
+                    <div class="book-card">
+                        <div class="book-image-container">
+                            <img src="https://i.imgur.com/J6lWb9A.jpg" alt="Обложка книги Зоопарк в твоей голове" class="book-image">
+                            <div class="novelty-badge">Новинка</div>
+                        </div>
+                        
+                        <div class="book-content">
+                            <div class="book-title">Зоопарк в твоей голове</div>
+                            <div class="book-subtitle">25 психологических синдромов, которые управляют вами</div>
+                            <div class="book-authors">Михаил Лабковский, Ольга Примаченко</div>
+                            
+                            <div class="price-section">
+                                <div class="price">25,11 руб. <span class="check-icon">✔</span></div>
+                                <div class="discount">-10%</div>
+                            </div>
+                            
+                            <div class="bonus">
+                                <span class="check-icon">✔</span> 
+                                <span class="crystal">0,25 бонусов</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item item3">3</div>
+        </div>
+        <div class="item item7">
+            <div class="form-container">
+                <div class="form-title">Форма регистрации пользователя</div>
+                
+                <div class="form-row">
+                    <div class="form-label">Ваше имя:</div>
+                    <input type="text" class="form-input">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Пароль:</div>
+                    <input type="password" class="form-input">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Возраст:</div>
+                    <input type="text" class="form-input">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Пол:</div>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male">Мужской</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Женский</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Ваши увлечения:</div>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="music" name="hobby" value="music">
+                            <label for="music">Музыка</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="video" name="hobby" value="video">
+                            <label for="video">Видео</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="drawing" name="hobby" value="drawing">
+                            <label for="drawing">Рисование</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Ваша страна:</div>
+                    <select class="select-box">
+                        <option>Выберите страну</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Ваш город:</div>
+                    <select class="select-box">
+                        <option>Выберите город</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Кратко о себе:</div>
+                    <textarea class="textarea">Краткая информация о ваших увлечениях</textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Решите пример, запишите результат в поле ниже:</div>
+                    <input type="text" class="form-input">
+                </div>
+                
+                <div class="button-row">
+                    <button class="button cancel-button">Отменить ввод</button>
+                    <button class="button submit-button">Данные подтверждаю</button>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row row2">
+            <div class="item item4">4</div>
+            <div class="item item8">8</div>
+            <div class="item item5">5</div>
+            <div class="item item9">9</div>
+        </div>
+        <div class="item item10">Футер сайта</div>
+    </div>
+</body>
+</html>

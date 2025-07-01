@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        // Создаем массив из 15 целых элементов
+        const array = [];
+        for (let i = 0; i < 15; i++) {
+            array.push(Math.floor(Math.random() * 100) - 50); // числа от -50 до 49
+        }
+        
+        // Находим сумму положительных четных элементов
+        let sum = 0;
+        for (const num of array) {
+            if (num > 0 && num % 2 === 0) {
+                sum += num;
+            }
+        }
+        
+        // Сортируем массив по убыванию
+        const sortedArray = [...array].sort((a, b) => b - a);
+        
+        // Выводим результаты
+        document.write("Исходный массив: " + array.join(", ") + "<br>");
+        document.write("Сумма положительных четных элементов: " + sum + "<br>");
+        document.write("Отсортированный массив: " + sortedArray.join(", "));
+    </script>
+</body>
+</html>

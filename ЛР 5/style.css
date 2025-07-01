@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0px;
+    width: 100%;
+    max-width: 1920px;
+    margin: auto;
+    
+}
+
+.item {
+    text-align: center;
+    border: 3px solid;
+    box-sizing: border-box;
+}
+
+.flex-row {
+    display: flex;
+    width: 100%;
+}
+
+/* Блоки с уникальными цветами фона и размерами */
+.item1 { 
+    flex: 1 -1 100%; 
+    height: 50px; 
+    border-color: rgb(0, 0, 0); 
+    background-color: #ffffff; 
+}
+.item2 { 
+    flex: 1 1 33%; 
+    height: 700px; 
+    border-color: rgb(255, 204, 0); 
+    background-color: #ffffff; 
+}
+.item3 { 
+    flex: 1 1 33%; 
+    height: 700px; 
+    border-color: rgb(60, 255, 0); 
+    background-color: #ffffff; 
+}
+.item4 { 
+    flex: 1 1 25%; 
+    height: 700px; 
+    border-color: rgb(0, 238, 255); 
+    background-color: #ffffff; 
+}
+.item5 { 
+    flex: 1 1 25%; 
+    height:  700px; 
+    border-color: rgb(0, 38, 255); 
+    background-color: #ffffff; 
+}
+.item6 { 
+    flex: 1 1 33%; 
+    height: 700px; 
+    border-color: rgb(212, 0, 255); 
+    background-color: #ffffff; 
+}
+.item7 { 
+    flex: 1 -1 100%; 
+    height: 50px; 
+    border-color: rgb(195, 0, 255); 
+    background-color: #ffffff; 
+}
+.item8 { 
+    flex: 1 1 25%; 
+    height: 700px; 
+    border-color: rgb(255, 0, 153); 
+    background-color: #ffffff; 
+}
+.item9 { 
+    flex: 1 1 25%; 
+    height: 700px; 
+    border-color: rgb(255, 0, 0); 
+    background-color: #ffffff; 
+}
+.item10 { 
+    flex: 1 -1 100%; 
+    height: 50px; 
+    border-color: rgb(0, 0, 0); 
+    background-color: #ffffff; 
+}

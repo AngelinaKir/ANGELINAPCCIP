@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЗООПАРК в твоей голове</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .card {
+            width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .image-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .book-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .novelty-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4757;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 2;
+        }
+        
+        .content {
+            padding: 15px;
+        }
+        
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .authors {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .check-icon {
+            color: #2ed573;
+        }
+        
+        .discount {
+            color: #ff4757;
+            font-weight: bold;
+        }
+        
+        .bonus {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .crystal {
+            color: #1e90ff;
+            font-weight: bold;
+        }
+        
+        /* Стили для второй книги */
+        .second-book {
+            transform: rotate(5deg);
+            margin-top: 30px;
+            border: 3px solid #ffcc00;
+        }
+        
+        .second-book .novelty-badge {
+            background-color: #00b894;
+        }
+        
+        .second-book .image-container {
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Первая книга -->
+    <div class="card">
+        <div class="image-container">
+            <img src="https://i.imgur.com/J6lWb9A.jpg" alt="Обложка книги Зоопарк в твоей голове" class="book-image">
+            <div class="novelty-badge">НОВИНКА</div>
+        </div>
+        
+        <div class="content">
+            <div class="title">Зоопарк в твоей голове</div>
+            <div class="subtitle">25 психологических синдромов, которы...</div>
+            <div class="authors">Михаил Лабковский, Ольга Примаче...</div>
+            
+            <div class="price-section">
+                <div class="price">25,11 руб. <span class="check-icon">✔</span></div>
+                <div class="discount">-10%</div>
+            </div>
+            
+            <div class="bonus">
+                <span class="check-icon">✔</span> <span class="crystal">0,25</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Вторая книга - новинка -->
+    <div class="card second-book">
+        <div class="image-container">
+            <img src="https://i.imgur.com/r9aU2xv.jpg" alt="Новая книга" class="book-image">
+            <div class="novelty-badge">НОВИНКА</div>
+        </div>
+        
+        <div class="content">
+            <div class="title">Новая психология успеха</div>
+            <div class="subtitle">Как перепрограммировать свой мозг</div>
+            <div class="authors">Анна Светлова, Игорь Мозговой...</div>
+            
+            <div class="price-section">
+                <div class="price">29,99 руб. <span class="check-icon">✔</span></div>
+                <div class="discount">-15%</div>
+            </div>
+            
+            <div class="bonus">
+                <span class="check-icon">✔</span> <span class="crystal">0,35</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

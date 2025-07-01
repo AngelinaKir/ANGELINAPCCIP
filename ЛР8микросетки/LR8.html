@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма регистрации пользователя</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .form-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .form-label {
+            width: 150px;
+            font-weight: bold;
+        }
+        
+        .form-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .select-box {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+        }
+        
+        .textarea {
+            flex: 1;
+            height: 80px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+        
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .cancel-button {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-title">Форма регистрации пользователя</div>
+        
+        <div class="form-row">
+            <div class="form-label">Ваше имя:</div>
+            <input type="text" class="form-input">
+        </div>
+        
+        <div class="form-row">
+            <div class="form-label">Пароль:</div>
+            <input type="password" class="form-input">
+        </div>
+        
+        <div class="form-row">
+            <div class="form-label">Возраст:</div>
+            <input type="text" class="form-input">
+        </div>
+        
+        <div class="form-row">
+            <div class="form-label">Пол:</div>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Мужской</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Женский</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-label">Ваши увлечения:</div>
+            <div class="checkbox-group">
+                <div class="checkbox-option">
+                    <input type="checkbox" id="music" name="hobby" value="music">
+                    <label for="music">Музыка</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="video" name="hobby" value="video">
+                    <label for="video">Видео</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="drawing" name="hobby" value="drawing">
+                    <label for="drawing">Рисование</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-label">Ваша страна:</div>
+            <select class="select-box">
+                <option>Выберите страну</option>
+            </select>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-label">Ваш город:</div>
+            <select class="select-box">
+                <option>Выберите город</option>
+            </select>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-label">Кратко о себе:</div>
+            <textarea class="textarea">Краткая информация о ваших увлечениях</textarea>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-label">Решите пример, запишите результат в поле ниже:</div>
+            <input type="text" class="form-input">
+        </div>
+        
+        <div class="button-row">
+            <button class="button cancel-button">Отменить ввод</button>
+            <button class="button submit-button">Данные подтверждаю</button>
+        </div>
+    </div>
+</body>
+</html>

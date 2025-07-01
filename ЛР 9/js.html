@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практическая работа по JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Практическая работа по JavaScript</h1>
+
+    <!-- Раздел 1: Способы внедрения JS -->
+    <section id="embedding">
+        <h2>1. Способы внедрения JavaScript в HTML</h2>
+        
+        <h3>1.1. Встроенный скрипт</h3>
+        <button onclick="showEmbeddedAlert()">Показать alert</button>
+        <script>
+            function showEmbeddedAlert() {
+                alert("Это встроенный JavaScript!");
+            }
+        </script>
+
+        <h3>1.2. Внешний скрипт</h3>
+        <button onclick="externalFunction()">Вызвать внешнюю функцию</button>
+
+        <h3>1.3. JavaScript в атрибутах HTML</h3>
+        <button onclick="alert('Это обработчик события onclick!')">Нажми меня</button>
+
+        <h3>1.4. JavaScript в URL</h3>
+        <a href="javascript:alert('Это JavaScript в ссылке!')">Кликни здесь</a>
+    </section>
+
+    <!-- Раздел 2: Операторы JavaScript -->
+    <section id="operators">
+        <h2>2. Операторы JavaScript</h2>
+        
+        <h3>2.1. Условный оператор if/else</h3>
+        <button onclick="checkAge()">Проверить возраст</button>
+        
+        <h3>2.2. Оператор switch</h3>
+        <button onclick="checkDay()">Проверить день недели</button>
+        
+        <h3>2.3. Цикл for</h3>
+        <button onclick="runForLoop()">Запустить цикл for</button>
+        
+        <h3>2.4. Цикл while</h3>
+        <button onclick="runWhileLoop()">Запустить цикл while</button>
+        
+        <h3>2.5. Цикл do...while</h3>
+        <button onclick="runDoWhileLoop()">Запустить цикл do...while</button>
+        
+        <h3>2.6. Оператор break</h3>
+        <button onclick="useBreak()">Демонстрация break</button>
+        
+        <h3>2.7. Оператор continue</h3>
+        <button onclick="useContinue()">Демонстрация continue</button>
+        
+        <h3>2.8. Оператор return</h3>
+        <button onclick="useReturn()">Демонстрация return</button>
+    </section>
+
+    <!-- Раздел 3: Диалоговые окна -->
+    <section id="dialogs">
+        <h2>3. Диалоговые окна</h2>
+        
+        <h3>3.1. alert</h3>
+        <button onclick="showAlert()">Показать alert</button>
+        
+        <h3>3.2. confirm</h3>
+        <button onclick="showConfirm()">Показать confirm</button>
+        
+        <h3>3.3. prompt</h3>
+        <button onclick="showPrompt()">Показать prompt</button>
+    </section>
+
+    <!-- Подключение внешнего скрипта -->
+    <script src="external.js"></script>
+
+    <!-- Основной скрипт -->
+    <script>
+        // 2.1. Условный оператор if/else
+        function checkAge() {
+            let age = prompt("Введите ваш возраст:");
+            if (age >= 18) {
+                alert("Доступ разрешен!");
+            } else {
+                alert("Доступ запрещен!");
+            }
+          }
+
+        // 2.2. Оператор switch
+        function checkDay() {
+            let day = prompt("Введите номер дня недели (1-7):");
+            switch(day) {
+                case '1': alert("Понедельник"); break;
+                case '2': alert("Вторник"); break;
+                case '3': alert("Среда"); break;
+                case '4': alert("Четверг"); break;
+                case '5': alert("Пятница"); break;
+                case '6': alert("Суббота"); break;
+                case '7': alert("Воскресенье"); break;
+                default: alert("Некорректный ввод");
+            }
+        }
+
+        // 2.3. Цикл for
+        function runForLoop() {
+            let result = "";
+            for (let i = 0; i < 5; i++) {
+                result += "Итерация " + i + "\n";
+            }
+            alert(result);
+        }
+
+        // 2.4. Цикл while
+        function runWhileLoop() {
+            let result = "";
+            let i = 0;
+            while (i < 5) {
+                result += "While: " + i + "\n";
+                i++;
+            }
+            alert(result);
+        }
+
+        // 2.5. Цикл do...while
+        function runDoWhileLoop() {
+            let result = "";
+            let j = 0;
+            do {
+                result += "Do-While: " + j + "\n";
+                j++;
+            } while (j < 5);
+            alert(result);
+        }
+
+        // 2.6. Оператор break
+        function useBreak() {
+            let result = "";
+            for (let i = 0; i < 10; i++) {
+                if (i === 5) break;
+                result += "Break: " + i + "\n";
+            }
+            alert(result);
+        }
+
+        // 2.7. Оператор continue
+        function useContinue() {
+            let result = "";
+            for (let i = 0; i < 5; i++) {
+                if (i === 2) continue;
+                result += "Continue: " + i + "\n";
+            }
+            alert(result);
+        }
+
+        // 2.8. Оператор return
+        function useReturn() {
+            function sum(a, b) {
+                return a + b;
+            }
+            alert("Сумма 2 и 3: " + sum(2, 3));
+        }
+
+        // 3.1. alert
+        function showAlert() {
+            alert("Это простое сообщение!");
+        }
+
+        // 3.2. confirm
+        function showConfirm() {
+            let isConfirmed = confirm("Вы уверены, что хотите продолжить?");
+            alert("Вы выбрали: " + (isConfirmed ? "Да" : "Нет"));
+        }
+
+        // 3.3. prompt
+        function showPrompt() {
+            let name = prompt("Как вас зовут?", "Гость");
+            if (name) {
+                alert("Привет, " + name + "!");
+            } else {
+                alert("Вы не ввели имя!");
+            }
+        }
+    </script>
+</body>
+</html>

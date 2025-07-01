@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Шпаргалка по HTML-тегам</title>
+    <meta name="description" content="Пример использования различных HTML-тегов">
+
+    <!-- 2. Внутренние стили -->
+    <style>
+        /* <!-- 4. @import --> */
+        @import url('additional-styles.css');
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: rgb(24, 21, 179);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+
+    /* <!-- 3. Внешняя таблица стилей --> */
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <header>
+        <h1>Шпаргалка по HTML-тегам</h1>
+        <nav>
+            <ul>
+                <li><a href="#structure" style="color: white; text-decoration: none;">Структура документа</a></li>
+                <li><a href="#text-formatting" style="color: white; text-decoration: none;">Оформление текста</a></li>
+                <li><a href="#lists" style="color: white; text-decoration: none;">Списки</a></li>
+                <li><a href="#images" style="color: white; text-decoration: none;">Изображения</a></li>
+                <li><a href="#media" style="color: white; text-decoration: none;">Аудио и видео</a></li>
+                <li><a href="#tables" style="color: white; text-decoration: none;">Таблицы</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="structure">
+            <h2>Структура HTML-документа</h2>
+            <p>Пример основной структуры документа с мета-тегами:</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Заголовок страницы&lt;/title&gt;
+    &lt;meta name="description" content="Описание страницы"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    ...
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+        </section>
+
+        <section id="text-formatting">
+            <h2>Оформление текста</h2>
+            <p style="color: rgba(117, 88, 122, 0.932); font-weight: bold;">
+                Абзац текста. <i>Курсивный текст</i>. <u>Подчеркнутый текст</u>. <s>Перечеркнутый текст</s>. <b>Жирный текст</b>.</p>
+        </section>
+
+        <section id="lists">
+            <h2>Списки</h2>
+            <h3>Навыки</h3>
+            <ul style="list-style-type: disc;">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+            <h3>Любимые блюда</h3>
+            <ul style="list-style-type: circle;">
+                <li>Паста</li>
+                <li>Пицца</li>
+                <li>Суши</li>
+            </ul>
+            <h3>Хобби</h3>
+            <ul style="list-style-type: square;">
+                <li>Чтение</li>
+                <li>Путешествия</li>
+                <li>Кулинария</li>
+            </ul>
+        </section>
+
+        <section id="images">
+            <h2>Изображения</h2>
+            <img src="фото.jpg" alt="Ваше фото" width="300" height="200">
+        </section>
+
+        <section id="media">
+            <h2>Аудио и видео-контент</h2>
+            <audio controls>
+                <source src="песня.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает элемент <code>audio</code>.
+            </audio>
+            <video controls width="400" height="300">
+                <source src="видео.mp4" type="video/mp4">
+                Ваш браузер не поддерживает элемент <code>video</code>.
+            </video>
+        </section>
+
+        <section id="tables">
+            <h2>Таблицы</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Заголовок 1</th>
+                        <th>Заголовок 2</th>
+                        <th>Заголовок 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">Объединённая ячейка 1</td>
+                        <td>Данные 2</td>
+                        <td>Данные 3</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Объединённая ячейка 2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="forms">
+            <h2>Пользовательские формы</h2>
+            <form action="#" method="post">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name"><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br>
+
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password"><br>
+
+                <label for="phone">Номер телефона:</label>
+                <input type="tel" id="phone" name="phone" pattern="\+375-\d{2}-\d{3}-\d{4}" placeholder="+375-XX-XXX-XXXX"><br>
+
+                <label for="birthdate">Дата рождения:</label>
+                <input type="date" id="birthdate" name="birthdate"><br>
+
+                <label for="gender">Пол:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Мужской</option>
+                    <option value="female">Женский</option>
+                </select><br>
+
+                <label for="address">Адрес:</label>
+                <textarea id="address" name="address"></textarea><br>
+
+                <input type="submit" value="Отправить">
+            </form>
+        </section>
+
+        <section id="links">
+            <h2>Гиперссылки</h2>
+            <p>Примеры использования ссылок:</p>
+            <a href="#structure">К разделу "Структура документа"</a><br>
+            <a href="#text-formatting">К разделу "Оформление текста"</a><br>
+            <a href="#lists">К разделу "Списки"</a><br>
+            <a href="https://www.youtube.com/" target="_blank">Пример внешней ссылки</a><br>
+            <a href="mailto:example@mail.com">Пример email-ссылки</a>
+        </section>
+
+        <section id="special-characters">
+            <h2>Спецсимволы</h2>
+            <p>&amp; - амперсанд<br>
+               &lt; - меньше<br>
+               &gt; - больше</p>
+        </section>
+
+        <section id="semantic-tags">
+            <h2>Семантические теги</h2>
+            <article>
+                <header>
+                    <h3>Заголовок статьи</h3>
+                </header>
+                <p>Основной контент статьи.</p>
+                <footer>
+                    <p>Завершающий блок статьи.</p>
+                </footer>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Шпаргалка по HTML-тегам</p>
+    </footer>
+</body>
+</html>

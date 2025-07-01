@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор функции F</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .formula-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        .formula {
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            font-size: 1.2em;
+        }
+        .input-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .input-field {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 30px auto;
+            width: 100%;
+            max-width: 300px;
+        }
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        #result {
+            margin-top: 35px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            font-size: 18px;
+        }
+        .result-value {
+            font-size: 24px;
+            color: #27ae60;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .condition {
+            font-style: italic;
+            color: #7f8c8d;
+            margin: 10px 0;
+        }
+        .parameters {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+        }
+        .error {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .math-container {
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Калькулятор функции F</h1>
+    
+    <div class="formula-container">
+        <p>Функция F определяется следующим образом:</p>
+        <div class="formula">
+            <div class="math-container">
+                \[ F(a, b, c, x) = \begin{cases} 
+                ax^2 + bx + c & \text{при } a < 0 \text{ и } c \neq 0 \\ 
+                \dfrac{-a}{x - c} & \text{при } a > 0 \text{ и } c = 0 \\ 
+                a(x + c) & \text{в остальных случаях}
+                \end{cases} \]
+            </div>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <div class="input-field">
+            <label for="a">Параметр a:</label>
+            <input type="number" id="a" step="any" placeholder="Введите a">
+        </div>
+        <div class="input-field">
+            <label for="b">Параметр b:</label>
+            <input type="number" id="b" step="any" placeholder="Введите b">
+        </div>
+        <div class="input-field">
+            <label for="c">Параметр c:</label>
+            <input type="number" id="c" step="any" placeholder="Введите c">
+        </div>
+        <div class="input-field">
+            <label for="x">Параметр x:</label>
+            <input type="number" id="x" step="any" placeholder="Введите x">
+        </div>
+    </div>
+    
+    <button onclick="calculateF()">Вычислить значение F</button>
+    
+    <div id="result">
+        <p>Результат появится здесь после вычисления.</p>
+    </div>
+
+    <script>
+        function calculateF() {
+            // Получаем значения параметров
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+            const x = parseFloat(document.getElementById('x').value);
+            
+            // Проверка ввода
+            if (isNaN(a) || isNaN(b) || isNaN(c) || isNaN(x)) {
+                document.getElementById('result').innerHTML = 
+                    '<p class="error">Ошибка: все параметры должны быть числами</p>';
+                return;
+            }
+            
+            let F, condition, formula;
+            
+            try {
+                // Вычисляем F по соответствующему условию
+                if (a < 0 && c !== 0) {
+                    F = a * x * x + b * x + c;
+                    condition = "a < 0 и c ≠ 0";
+                    formula = `F = a·x² + b·x + c = ${a}·${x}² + ${b}·${x} + ${c}`;
+                } 
+                else if (a > 0 && c === 0) {
+                    if (x - c === 0) throw new Error("Деление на ноль");
+                    F = (-a) / (x - c);
+                    condition = "a > 0 и c = 0";
+                    formula = `F = (-a)/(x - c) = (${-a})/(${x} - ${c})`;
+                } 
+                else {
+                    F = a * (x + c);
+                    condition = "остальные случаи";
+                    formula = `F = a(x + c) = ${a}·(${x} + ${c})`;
+                }
+                
+                // Проверка результата
+                if (!isFinite(F)) throw new Error("Бесконечный результат");
+                if (isNaN(F)) throw new Error("Нечисловой результат");
+                
+                // Форматируем вывод
+                document.getElementById('result').innerHTML = `
+                    <h3>Результат вычисления:</h3>
+                    <div class="result-value">F = ${F.toFixed(6)}</div>
+                    <div class="condition">Условие: ${condition}</div>
+                    <div>${formula}</div>
+                    <div class="parameters">
+                        Использованные параметры:<br>
+                        a = ${a}, b = ${b}, c = ${c}, x = ${x}
+                    </div>
+                `;
+                
+            } catch (error) {
+                document.getElementById('result').innerHTML = `
+                    <p class="error">Ошибка вычисления: ${error.message}</p>
+                    <div class="parameters">
+                        Параметры: a = ${a}, b = ${b}, c = ${c}, x = ${x}
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

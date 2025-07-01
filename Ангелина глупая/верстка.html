@@ -1,0 +1,540 @@
+<!DOCTYPE html> <!-- Объявление типа документа как HTML5 -->
+<html lang="en"> <!-- Корневой элемент HTML с указанием языка (английский) -->
+<head> <!-- Начало секции метаданных -->
+    <meta charset="UTF-8"> <!-- Указание кодировки символов UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Метатег для адаптивного дизайна -->
+    <title>PAM Consulting</title> <!-- Заголовок страницы в браузере -->
+    <link rel="stylesheet" href="styles.css"> <!-- Подключение внешней таблицы стилей -->
+    <script src="script.js" defer></script> <!-- Подключение JavaScript файла с атрибутом defer (загрузка после HTML) -->
+    <style>
+        
+    </style>
+</head>
+<body> <!-- Начало тела документа -->
+    <!-- Header --> <!-- Комментарий: секция шапки сайта -->
+    <header> <!-- Тег шапки сайта -->
+        <div class="logo-container"> <!-- Контейнер для логотипа -->
+            <img src="logo.png" alt="PAM Consulting" class="logo-img"> <!-- Изображение логотипа -->
+        </div>
+        <nav> <!-- Навигационное меню -->
+            <ul> <!-- Неупорядоченный список пунктов меню -->
+               <li><a href="#">HOME</a></li>
+        <li>
+            <a href="#">ABOUT US</a>
+            <!-- Добавленное выпадающее меню -->
+            <ul class="submenu">
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">Our History</a></li>
+                <li><a href="#">Testimonials</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">SERVICES</a>
+            <ul class="submenu">
+                <li><a href="#">Family Relocation</a></li>
+                <li><a href="#">Business Relocation</a></li>
+                <li><a href="#">Investment Plans</a></li>
+            </ul>
+        </li>
+                <li><a href="#">INVEST IN CYPRUS</a></li> <!-- Пункт меню "Инвестиции в Кипр" -->
+                <li><a href="#">MIGRATION</a></li> <!-- Пункт меню "Миграция" -->
+                <li><a href="#">CONTACT US</a></li> <!-- Пункт меню "Контакты" -->
+            </ul>
+        </nav>
+        <button class="contact-btn">Get in touch</button> <!-- Кнопка "Связаться" -->
+        <button class="hamburger"> <!-- Кнопка гамбургер-меню для мобильных устройств -->
+            <span class="hamburger-line"></span> <!-- Линия гамбургер-меню -->
+            <span class="hamburger-line"></span> <!-- Линия гамбургер-меню -->
+            <span class="hamburger-line"></span> <!-- Линия гамбургер-меню -->
+        </button>
+    </header>
+
+
+    
+    <!-- Vertical Slider --> <!-- Комментарий: вертикальный слайдер -->
+    <div class="slider-container"> <!-- Контейнер слайдера -->
+        <div class="slider"> <!-- Основной блок слайдера -->
+            <!-- Slide 1 --> <!-- Комментарий: первый слайд -->
+            <div class="slide active" style="background-image: url('фон1.png');"> <!-- Активный слайд с фоновым изображением -->
+                <div class="slide-content"> <!-- Контент слайда -->
+                    <h2>Relocating to Cyprus</h2> <!-- Заголовок слайда -->
+                    <p>Seamless – Exceptional – Experience</p> <!-- Текст слайда -->
+                    <p>The captivating Mediterranean island of Cyprus has become a business haven with a flourishing expat community...</p> <!-- Описание -->
+                    <a href="#" class="slide-btn">Find Out More</a> <!-- Кнопка "Узнать больше" -->
+                </div>
+                
+                <div class="popular-cities"> <!-- Блок с популярными городами -->
+                    <span class="city">Nicosia</span> <!-- Город Никосия -->
+                    <span class="city">Limassol</span> <!-- Город Лимассол -->
+                    <span class="city">Paphos</span> <!-- Город Пафос -->
+                    <span class="city">Larnaka</span> <!-- Город Ларнака -->
+                </div>
+            </div>
+            
+            <!-- Остальные слайды имеют аналогичную структуру -->
+            <!-- Slide 2 --> <!-- Второй слайд -->
+            <div class="slide" style="background-image: url('фон2.png');">
+                <div class="slide-content">
+                    <h2>Invest in property in Cyprus</h2>
+                    <p>Real estate has become a flourishing type of investment on the island...</p>
+                    <a href="#" class="slide-btn">Check more</a>
+                </div>
+            </div>
+            
+            <!-- Slide 3 --> <!-- Третий слайд -->
+            <div class="slide" style="background-image: url('фон3.png');">
+                <div class="slide-content">
+                    <h2>Family Relocation</h2>
+                    <p>Globally known as one of the safest places to live in the world...</p>
+                    <a href="#" class="slide-btn">Check more</a>
+                </div>
+            </div>
+            
+            <!-- Slide 4 --> <!-- Четвертый слайд -->
+            <div class="slide" style="background-image: url('фон4.png');">
+                <div class="slide-content">
+                    <h2>Business Relocation</h2>
+                    <p>Cyprus has a lot to offer for business entrepreneurs...</p>
+                    <a href="#" class="slide-btn">Check more</a>
+                </div>
+            </div>
+            
+            <!-- Slide 5 --> <!-- Пятый слайд -->
+            <div class="slide" style="background-image: url('фон5.png');">
+                <div class="slide-content">
+                    <h2>Investing in Yachts</h2>
+                    <p>Living on an island is an adventure that opens up a wide range of experiences...</p>
+                    <a href="#" class="slide-btn">Check more</a>
+                </div>
+            </div>
+            
+            <!-- Slide 6 --> <!-- Шестой слайд -->
+            <div class="slide" style="background-image: url('фон6.png');">
+                <div class="slide-content">
+                    <h2>Moving to Cyprus</h2>
+                    <p>Thousands of individuals and families from every part of the globe...</p>
+                    <a href="#" class="slide-btn">Check more</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation dots --> <!-- Навигационные точки слайдера -->
+        <div class="slider-nav">
+            <div class="slider-dot active"></div> <!-- Активная точка -->
+            <div class="slider-dot"></div> <!-- Точка слайдера -->
+            <div class="slider-dot"></div> <!-- Точка слайдера -->
+            <div class="slider-dot"></div> <!-- Точка слайдера -->
+            <div class="slider-dot"></div> <!-- Точка слайдера -->
+            <div class="slider-dot"></div> <!-- Точка слайдера -->
+        </div>
+    </div>
+
+    <!-- Services Section --> <!-- Секция услуг -->
+    <section class="services-section">
+        <h1 class="section-title">OUR SERVICES</h1> <!-- Заголовок секции -->
+        
+        <div class="services-container"> <!-- Контейнер для карточек услуг -->
+            <!-- Service 1 --> <!-- Первая услуга -->
+            <div class="service-card">
+                <img src="services1.png" alt="Family Relocation" class="service-image"> <!-- Изображение услуги -->
+                <h3 class="service-title">FAMILY<br>RELOCATION</h3> <!-- Название услуги -->
+                <p class="service-description">With strategic planning, we simplify the moving process...</p> <!-- Описание услуги -->
+                <a href="#" class="service-btn">Find Out More</a> <!-- Кнопка "Узнать больше" -->
+            </div>
+            
+            <!-- Остальные услуги имеют аналогичную структуру -->
+            <!-- Service 2 --> <!-- Вторая услуга -->
+            <div class="service-card">
+                <img src="services2.png" alt="Business Relocation" class="service-image">
+                <h3 class="service-title">BUSINESS<br>RELOCATION</h3>
+                <p class="service-description">We handle the responsibility of moving your business...</p>
+                <a href="#" class="service-btn">Find Out More</a>
+            </div>
+            
+            <!-- Service 3 --> <!-- Третья услуга -->
+            <div class="service-card">
+                <img src="services3.png" alt="Investment Plans" class="service-image">
+                <h3 class="service-title">INVESTMENT<br>PLANS</h3>
+                <p class="service-description">Discover the opportunity to further enhance your business...</p>
+                <a href="#" class="service-btn">Find Out More</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Paradise Section --> <!-- Секция "Рай" -->
+    <section class="paradise-section">
+        <div class="paradise-image left"></div> <!-- Левое изображение -->
+        <div class="paradise-content"> <!-- Контент секции -->
+            <h2 class="paradise-title">MOVING TO PARADISE</h2> <!-- Заголовок -->
+            <p class="paradise-text"> <!-- Текст параграфа -->
+                Have you ever dreamed about the perfect place to live?...
+            </p>
+            
+            <p class="paradise-text"> <!-- Второй параграф -->
+                If you've made the decision to relocate to Cyprus...
+            </p>
+            <hr class="paradise-divider"> <!-- Горизонтальная линия -->
+            <a href="#" class="paradise-btn">Find Out More</a> <!-- Кнопка -->
+        </div>
+        <div class="paradise-image right"></div> <!-- Правое изображение -->
+    </section>
+
+    <!-- Why Choose Cyprus Section --> <!-- Секция "Почему Кипр" -->
+    <section class="why-cyprus-section">
+        <h2 class="why-cyprus-title">WHY CHOOSE CYPRUS?</h2> <!-- Заголовок секции -->
+        <p class="why-cyprus-text"> <!-- Текст секции -->
+            When you're searching for the ideal home you want everything to be perfect...
+        </p>
+        
+        <div class="benefits-container"> <!-- Контейнер преимуществ -->
+            <!-- Benefit 1 --> <!-- Первое преимущество -->
+            <div class="benefit-item">
+                <img src="denga.png" alt="Tax System" class="benefit-image"> <!-- Иконка преимущества -->
+                <h3 class="benefit-title">Progressive tax system</h3> <!-- Заголовок преимущества -->
+                <p class="benefit-description">Offering one of the most attractive tax regimes in Europe</p> <!-- Описание -->
+            </div>
+            
+            <!-- Остальные преимущества имеют аналогичную структуру -->
+            <!-- Benefit 2 --> <!-- Второе преимущество -->
+            <div class="benefit-item">
+                <img src="solnce.png" alt="Weather" class="benefit-image">
+                <h3 class="benefit-title">Stunning weather and climate</h3>
+                <p class="benefit-description">Enjoy a high quality of life with over 324 days of sun annually</p>
+            </div>
+            
+            <!-- Benefit 3 --> <!-- Третье преимущество -->
+            <div class="benefit-item">
+                <img src="ludi.png" alt="Community" class="benefit-image">
+                <h3 class="benefit-title">Blooming expat community</h3>
+                <p class="benefit-description">Become part of an increasingly diverse community</p>
+            </div>
+            
+            <!-- Benefit 4 --> <!-- Четвертое преимущество -->
+            <div class="benefit-item">
+                <img src="dom.png" alt="Family" class="benefit-image">
+                <h3 class="benefit-title">Family-oriented values</h3>
+                <p class="benefit-description">Excellent education standards and extremely low crime rates</p>
+            </div>
+        </div>
+    </section>
+
+     <!-- Limassol Section --> <!-- Секция о Лимассоле -->
+     <section class="limassol-section">
+        <div class="text-block"> <!-- Текстовый блок -->
+            <div class="city-image"></div> <!-- Изображение города -->
+            <h3 class="city-title">Limassol</h3> <!-- Название города -->
+            <p class="city-description">The sunny city of Limassol is the second largest city of the island...</p> <!-- Описание -->
+            <p class="city-description">The Limassol Marina is the first marina to harbor yachts in Cyprus...</p> <!-- Продолжение описания -->
+        </div>
+    </section>
+
+    <!-- About Section --> <!-- Секция "О нас" -->
+    <section class="about-section">
+        <div class="about-container"> <!-- Контейнер секции -->
+            <div class="about-text"> <!-- Текстовый блок -->
+                <h2 class="about-title">WHO WE ARE</h2> <!-- Заголовок -->
+                <p class="about-paragraph">PAM Consulting is built upon a team of motivated professionals...</p> <!-- Параграф -->
+                <p class="about-paragraph">We understand the challenges of deciding to relocate...</p> <!-- Параграф -->
+                <a href="#" class="btn-primary">More about us</a> <!-- Кнопка -->
+            </div>
+    
+            <div class="founder-card"> <!-- Карточка основателя -->
+                <div class="founder-image"></div> <!-- Изображение основателя -->
+                <div class="founder-content"> <!-- Контент карточки -->
+                    <p class="founder-label">FOUNDER</p> <!-- Метка "Основатель" -->
+                    <p class="founder-description">Brief description about the founder or company values could go here.</p> <!-- Описание -->
+                    <a href="#" class="btn-secondary">Contact</a> <!-- Кнопка -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Make It Happen Section --> <!-- Секция "Как мы это делаем" -->
+    <section class="why-cyprus-section">
+        <h2 class="why-cyprus-title">HOW WE MAKE IT HAPPEN</h2> <!-- Заголовок -->
+        <p class="why-cyprus-text"> <!-- Текст секции -->
+            When you're searching for the ideal home you want everything to be perfect...
+        </p>
+        
+        <div class="benefits-container"> <!-- Контейнер преимуществ -->
+            <!-- Benefit 1 --> <!-- Первое преимущество -->
+            <div class="benefit-item">
+                <img src="uxo.png" alt="We listen" class="benefit-image"> <!-- Иконка -->
+                <h3 class="benefit-title">We listen</h3> <!-- Заголовок -->
+                <p class="benefit-description">Our most prominent purpose is to understand and identify with your needs...</p> <!-- Описание -->
+            </div>
+            
+            <!-- Остальные преимущества имеют аналогичную структуру -->
+            <!-- Benefit 2 --> <!-- Второе преимущество -->
+            <div class="benefit-item">
+                <img src="darts.png" alt="We strategize" class="benefit-image">
+                <h3 class="benefit-title">We strategize</h3>
+                <p class="benefit-description">According to your requirements, our team designs a thorough series of steps...</p>
+            </div>
+            
+            <!-- Benefit 3 --> <!-- Третье преимущество -->
+            <div class="benefit-item">
+                <img src="ruka.png" alt="We provide" class="benefit-image">
+                <h3 class="benefit-title">We provide</h3>
+                <p class="benefit-description">We implement our services that are based on efficient strategic planning...</p>
+            </div>
+            
+            <!-- Benefit 4 --> <!-- Четвертое преимущество -->
+            <div class="benefit-item">
+                <img src="telefon.png" alt="We manage" class="benefit-image">
+                <h3 class="benefit-title">We manage</h3>
+                <p class="benefit-description">Once you are settled, we make sure that everything is according to your expectations...</p>
+            </div>
+        </div>
+    </section>
+
+   <!-- Contact Combined Section --> <!-- Комбинированная секция контактов -->
+<section class="contact-combined-section">
+    <div class="contact-combined-container"> <!-- Контейнер секции -->
+        <!-- Contact Info Section --> <!-- Секция контактной информации -->
+        <div class="contact-info-section">
+            <h2 class="contact-title-combined">CONTACT US</h2> <!-- Заголовок -->
+            
+            <div class="contact-info-vertical"> <!-- Вертикальное расположение контактов -->
+                <!-- Phone --> <!-- Телефон -->
+                <div class="contact-item-vertical">
+                    <div class="contact-icon-container"> <!-- Контейнер иконки -->
+                        <svg class="contact-icon-large" viewBox="0 0 24 24"> <!-- SVG иконка телефона -->
+                            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                        </svg>
+                    </div>
+                    <span class="contact-text-combined">+357 9056759</span> <!-- Номер телефона -->
+                </div>
+                
+                <!-- Email --> <!-- Электронная почта -->
+                <div class="contact-item-vertical">
+                    <div class="contact-icon-container">
+                        <svg class="contact-icon-large" viewBox="0 0 24 24"> <!-- SVG иконка email -->
+                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <span class="contact-text-combined">contact@pamrelocation.com</span> <!-- Адрес email -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Form Section --> <!-- Секция формы -->
+        <div class="form-container-combined">
+            <h3 class="form-title-combined">SEND INQUIRY</h3> <!-- Заголовок формы -->
+            
+            <form> <!-- Форма -->
+                <!-- First row - Name and Email --> <!-- Первая строка - Имя и Email -->
+                <div class="form-grid"> <!-- Сетка формы -->
+                    <div class="form-group"> <!-- Группа полей формы -->
+                        <label for="name" class="form-label">Your Name</label> <!-- Метка поля -->
+                        <input type="text" id="name" class="form-input" required> <!-- Поле ввода -->
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                </div>
+                
+                <!-- Second row - Subject and Phone --> <!-- Вторая строка - Тема и Телефон -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" class="form-input">
+                    </div>
+                </div>
+                
+                <!-- Message box --> <!-- Поле сообщения -->
+                <div class="form-group full-width">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea id="message" class="form-input message-box" required></textarea> <!-- Текстовое поле -->
+                </div>
+                
+                <!-- Terms checkbox and text --> <!-- Чекбокс и текст условий -->
+                <div class="terms-container">
+                    <input type="checkbox" id="terms" class="terms-checkbox" required> <!-- Чекбокс -->
+                    <label for="terms" class="terms-text"> <!-- Текст условий -->
+                        By clicking "Submit button" you accept our Terms & Conditions...
+                    </label>
+                </div>
+                
+                <!-- Submit button --> <!-- Кнопка отправки -->
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Partners Section --> <!-- Секция партнеров -->
+<section class="partners-section">
+    <div class="partners-container">
+        <h2 class="partners-title">OUR PARTNERS</h2> <!-- Заголовок -->
+    </div>
+    <div class="partner-image-container">
+        <img src="partner.png" alt="Our Partners" class="partner-image"> <!-- Изображение партнеров -->
+    </div>
+</section>
+
+ <!-- FAQ Slider Section --> <!-- Секция FAQ (слайдер) -->
+ <section class="faq-section">
+    <h2 class="faq-title">FREQUENTLY ASKED QUESTIONS</h2> <!-- Заголовок -->
+    
+    <div class="faq-slider-container"> <!-- Контейнер слайдера FAQ -->
+        <div class="faq-slider"> <!-- Слайдер -->
+            <!-- FAQ Slide 1 --> <!-- Первый слайд -->
+            <div class="faq-slide">
+                <div class="faq-content">
+                    <img src="zakat1.png" alt="FAQ Image" class="partner-image"> <!-- Изображение слайда -->
+                </div>
+            </div>
+            
+            <!-- Остальные слайды имеют аналогичную структуру -->
+            <!-- FAQ Slide 2 --> <!-- Второй слайд -->
+            <div class="faq-slide">
+                <div class="faq-content">
+                    <img src="zakat2.png" alt="FAQ Image" class="partner-image">
+                </div>
+            </div>
+            
+            <!-- FAQ Slide 3 --> <!-- Третий слайд -->
+            <div class="faq-slide">
+                <div class="faq-content">
+                    <img src="zakat3.png" alt="FAQ Image" class="partner-image">
+                </div>
+            </div>
+            
+            <!-- FAQ Slide 4 --> <!-- Четвертый слайд -->
+            <div class="faq-slide">
+                <div class="faq-content">
+                    <img src="zakat4.png" alt="FAQ Image" class="partner-image">
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQ Navigation Dots --> <!-- Навигационные точки -->
+        <div class="faq-nav">
+            <div class="faq-dot active" data-slide="0"></div> <!-- Активная точка -->
+            <div class="faq-dot" data-slide="1"></div> <!-- Точка -->
+            <div class="faq-dot" data-slide="2"></div> <!-- Точка -->
+            <div class="faq-dot" data-slide="3"></div> <!-- Точка -->
+        </div>
+    </div>
+
+ <div class="page-wrapper">
+        <div class="booking-container">
+            <h1 class="booking-title">Форма бронирования</h1>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" class="form-input" placeholder="Иван Иванов" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Номер телефона</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="+375 (XX) XXX-XX-XX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="example@mail.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination">Направление</label>
+                    <select id="destination" class="form-input" required>
+                        <option value="" disabled selected>Выберите направление</option>
+                        <option value="Москва">Москва</option>
+                        <option value="Санкт-Петербург">Санкт-Петербург</option>
+                        <option value="Сочи">Сочи</option>
+                        <option value="Калининград">Калининград</option>
+                        <option value="Казань">Казань</option>
+                        <option value="Крым">Крым</option>
+                        <option value="Алтай">Алтай</option>
+                        <option value="Байкал">Озеро Байкал</option>
+                        <option value="Камчатка">Камчатка</option>
+                        <option value="other">Другое направление</option>
+                    </select>
+                </div>
+                
+                <div id="otherDestinationGroup" class="form-group" style="display: none;">
+                    <label for="otherDestination">Укажите направление</label>
+                    <input type="text" id="otherDestination" class="form-input" placeholder="Введите город или регион">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Дата поездки</label>
+                        <input type="date" id="date" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="duration">Продолжительность</label>
+                        <select id="duration" class="form-input" required>
+                            <option value="" disabled selected>Выберите</option>
+                            <option value="1">1 день</option>
+                            <option value="2">2 дня</option>
+                            <option value="3">3 дня</option>
+                            <option value="5">5 дней</option>
+                            <option value="7">7 дней</option>
+                            <option value="10">10 дней</option>
+                            <option value="14">2 недели</option>
+                            <option value="30">1 месяц</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="people">Количество человек</label>
+                    <select id="people" class="form-input" required>
+                        <option value="" disabled selected>Выберите количество</option>
+                        <option value="1">1 человек</option>
+                        <option value="2">2 человека</option>
+                        <option value="3">3-4 человека</option>
+                        <option value="5">5-6 человек</option>
+                        <option value="10">7-10 человек</option>
+                        <option value="group">Группа (10+ человек)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments">Дополнительные пожелания</label>
+                    <textarea id="comments" class="form-input" rows="4" placeholder="Укажите особенности вашей поездки..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Забронировать поездку</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Модальное окно подтверждения -->
+    <div class="modal-overlay" id="confirmationModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="success-icon">✓</div>
+            <h2 class="modal-title">Бронирование подтверждено!</h2>
+            <div class="modal-text">
+                <p>Спасибо, <strong id="confirmName"></strong>!</p>
+                <p>Ваша поездка в <strong id="confirmDestination"></strong> на <strong id="confirmDate"></strong> успешно забронирована.</p>
+                <p>Продолжительность: <strong id="confirmDuration"></strong></p>
+                <p>Количество человек: <strong id="confirmPeople"></strong></p>
+                <p>Подробная информация отправлена на <strong id="confirmEmail"></strong></p>
+                <p id="confirmComments" style="margin-top: 15px; font-style: italic;"></p>
+            </div>
+            <button class="modal-btn" id="modalCloseBtn">Отлично!</button>
+        </div>
+    </div>
+
+    <div class="cyprus-map-container" style="margin: 40px auto; text-align: center;"></div>
+
+    <!-- Footer --> <!-- Подвал -->
+    <div class="faq-footer">
+        <p>© 2022 PAM Consulting. All rights reserved. | <a href="#">Disclaimer</a> | <a href="#">Privacy policy</a></p> <!-- Текст подвала с ссылками -->
+    </div>
+    
+</body> <!-- Конец тела документа -->
+</html> <!-- Конец HTML документа -->

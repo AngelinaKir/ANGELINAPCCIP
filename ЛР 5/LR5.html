@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Layout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Шапка с гамбургер-меню */
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            position: relative;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 20px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: #ddd;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0px;
+            width: 100%;
+            max-width: 1920px;
+            margin: auto;
+        }
+        
+        .item {
+            text-align: center;
+            border: 3px solid;
+            box-sizing: border-box;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .item img {
+            width: 100%;
+            max-width: 400px; /* Уменьшено с 800px до 400px */
+            height: auto;
+            margin-bottom: 15px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .item h2, .item h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .item p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .flex-row {
+            display: flex;
+            width: 100%;
+        }
+        
+        /* Блоки с уникальными цветами фона и размерами */
+        .item1 { 
+            flex: 1 -1 100%; 
+            height: 50px; 
+            border-color: rgb(0, 0, 0); 
+            background-color: #f8f9fa; 
+        }
+        .item2 { 
+            flex: 1 1 33%; 
+            height: 600px; /* Уменьшено с 700px */
+            border-color: rgb(255, 204, 0); 
+            background-color: #fff8e1; 
+        }
+        .item3 { 
+            flex: 1 1 33%; 
+            height: 600px; /* Уменьшено с 700px */
+            border-color: rgb(60, 255, 0); 
+            background-color: #e8f5e9; 
+        }
+        .item4 { 
+            flex: 1 1 25%; 
+            height: 600px; /* Уменьшено с 700px */
+            border-color: rgb(0, 238, 255); 
+            background-color: #e3f2fd; 
+        }
+        .item5 { 
+            flex: 1 1 25%; 
+            height: 600px; /* Уменьшено с 700px */
+            border-color: rgb(0, 38, 255); 
+            background-color: #e8eaf6; 
+        }
+        .item6 { 
+            flex: 1 1 33%; 
+            height: 600px; /* Уменьшено с 700px */
+            border-color: rgb(212, 0, 255); 
+            background-color: #f3e5f5; 
+        }
+        .item7 { 
+            flex: 1 -1 100%; 
+            height: 50px; 
+            border-color: rgb(195, 0, 255); 
+            background-color: #fce4ec; 
+        }
+        .item8 { 
+            flex: 1 1 25%; 
+            height: 600px; /* Уменьшено с 700px */
+            border-color: rgb(255, 0, 153); 
+            background-color: #ffebee; 
+        }
+        .item9 { 
+            flex: 1 1 25%; 
+            height: 600px; /* Уменьшено с 700px */
+            border-color: rgb(255, 0, 0); 
+            background-color: #fff3e0; 
+        }
+        .item10 { 
+            flex: 1 -1 100%; 
+            height: 50px; 
+            border-color: rgb(0, 0, 0); 
+            background-color: #f8f9fa; 
+        }
+        
+        /* Адаптация под разные экраны */
+        @media (max-width: 1200px) {
+            .item2, .item3, .item6 {
+                height: 500px; /* Уменьшено с 600px */
+            }
+            .item4, .item5, .item8, .item9 {
+                height: 500px; /* Уменьшено с 600px */
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .flex-row {
+                flex-wrap: wrap;
+            }
+            
+            .item2, .item3, .item6 {
+                flex: 1 1 50%;
+                height: 400px; /* Уменьшено с 500px */
+            }
+            
+            .item4, .item5, .item8, .item9 {
+                flex: 1 1 50%;
+                height: 400px; /* Уменьшено с 500px */
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 10px 20px;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .item2, .item3, .item6 {
+                flex: 1 1 100%;
+                height: 350px; /* Уменьшено с 400px */
+            }
+            
+            .item4, .item5, .item8, .item9 {
+                flex: 1 1 100%;
+                height: 350px; /* Уменьшено с 400px */
+            }
+            
+            .item p {
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .item2, .item3, .item6 {
+                height: 300px; /* Уменьшено с 350px */
+            }
+            
+            .item4, .item5, .item8, .item9 {
+                height: 300px; /* Уменьшено с 350px */
+            }
+            
+            .item {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка с гамбургер-меню -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">Путешествия</div>
+            <div class="hamburger" id="hamburger">☰</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Направления</a></li>
+                <li><a href="#">Фото</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="item item1">
+            <h1>Лучшие направления для путешествий</h1>
+        </div>
+        <div class="flex-row">
+            <div class="item item6">
+                <h2>Горные пейзажи</h2>
+                <p>Откройте для себя захватывающие дух горные вершины и чистый воздух. Идеально для любителей активного отдыха и красивых фотографий.</p>
+            </div>
+            <div class="item item2">
+                <h2>Морские курорты</h2>
+                <p>Расслабьтесь на белоснежных пляжах с кристально чистой водой. Идеальный вариант для спокойного отдыха и релаксации.</p>
+            </div>
+            <div class="item item3">
+                <h2>Городские туры</h2>
+                <p>Погрузитесь в атмосферу современных мегаполисов с их уникальной архитектурой, музеями и ресторанами.</p>
+            </div>
+        </div>
+        <div class="item item7">
+        </div>
+        <div class="flex-row">
+            <div class="item item4">
+                <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Лес"> <!-- Уменьшено до 400px -->
+                <h3>Экотуризм</h3>
+                <p>Отправьтесь в незабываемое путешествие по национальным паркам и заповедникам.</p>
+            </div>
+            <div class="item item8">
+                <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Зима"> <!-- Уменьшено до 400px -->
+                <h3>Зимние курорты</h3>
+                <p>Катание на лыжах, сноуборде и другие зимние развлечения для всей семьи.</p>
+            </div>
+            <div class="item item5">
+                <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Водопад"> <!-- Уменьшено до 400px -->
+                <h3>Природные чудеса</h3>
+                <p>Уникальные природные достопримечательности, которые стоит увидеть своими глазами.</p>
+            </div>
+            <div class="item item9">
+                <img src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Культура"> <!-- Уменьшено до 400px -->
+                <h3>Культурные туры</h3>
+                <p>Познакомьтесь с традициями и обычаями разных стран и народов.</p>
+            </div>
+        </div>
+        <div class="item item10">
+            <p>© 2023 Туристическое агентство "Путешествия". Контактная информация: travel@example.com | +7 (123) 456-78-90</p>
+        </div>
+    </div>
+    
+    <script>
+        // Скрипт для гамбургер-меню
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+        
+        // Закрытие меню при клике на пункт
+        const navItems = document.querySelectorAll('.nav-menu a');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    max-width: 1920px;
+    margin: auto;
+}
+
+.item {
+    text-align: center;
+    border: 3px solid;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-row {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+/* Базовые стили для всех блоков */
+.item1 { 
+    height: 300px; 
+    border-color: rgb(0, 0, 0); 
+    background-color: #ffffff; 
+}
+.item2, .item3, .item6 { 
+    height: 500px; 
+}
+.item4, .item5, .item8, .item9 { 
+    height: 300px; 
+}
+.item7 { 
+    height: 500px; 
+}
+.item10 { 
+    height: 300px; 
+    border-color: rgb(0, 0, 0); 
+    background-color: #ffffff; 
+}
+
+/* Цвета границ */
+.item2 { border-color: rgb(255, 204, 0); }
+.item3 { border-color: rgb(60, 255, 0); }
+.item4 { border-color: rgb(0, 238, 255); }
+.item5 { border-color: rgb(0, 38, 255); }
+.item6 { border-color: rgb(212, 0, 255); }
+.item7 { border-color: rgb(195, 0, 255); }
+.item8 { border-color: rgb(255, 0, 153); }
+.item9 { border-color: rgb(255, 0, 0); }
+
+/* Мобильная версия (до 768px) */
+@media (max-width: 768px) {
+    .item1, .item10 {
+        height: 50px;
+    }
+    .item2, .item3, .item6, .item7 {
+        height: 250px;
+    }
+    .item4, .item5, .item8, .item9 {
+        height: 150px;
+    }
+    
+    .flex-row {
+        flex-direction: column;
+    }
+    
+    .item2, .item3, .item4, .item5, 
+    .item6, .item7, .item8, .item9 {
+        width: 100%;
+    }
+}
+
+/* Планшетная версия (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1500px) {
+    .item1, .item10 {
+        height: 50px;
+    }
+    
+    .row1 {
+        flex-wrap: wrap;
+    }
+    .row1 .item6, 
+    .row1 .item2, 
+    .row1 .item3 {
+        width: 33.3%;
+        height: 350px;
+    }
+    
+    .item7 {
+        height: 350px;
+    }
+    
+    .row2 .item4, 
+    .row2 .item8, 
+    .row2 .item5, 
+    .row2 .item9 {
+        width: 50%;
+        height: 200px;
+    }
+}
+
+/* Десктопная версия (1025px и больше) */
+@media (min-width: 1025px) {
+    .item1, .item10 {
+        flex: 1 1 100%;
+    }
+    
+    .row1 .item6, 
+    .row1 .item2, 
+    .row1 .item3 {
+        flex: 1 1 33%;
+    }
+    
+    .item7 {
+        flex: 1 1 25%;
+    }
+    
+    .row2 .item4, 
+    .row2 .item8, 
+    .row2 .item5, 
+    .row2 .item9 {
+        flex: 1 1 25%;
+        height: 700px;
+    }
+}

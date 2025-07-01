@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комплексное задание с валидацией</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* Стили для основной части */
+        #insertBtn {
+            display: none;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #insertBtn:hover {
+            background-color: #45a049;
+        }
+        img {
+            cursor: pointer;
+            border: 2px solid #ddd;
+            max-width: 300px;
+            display: block;
+            margin-top: 10px;
+        }
+        img:hover {
+            border-color: #4CAF50;
+        }
+        a {
+            display: block;
+            margin-top: 10px;
+            color: #0066cc;
+            text-decoration: underline;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            color: green;
+            text-decoration: none;
+            font-size: 32px;
+        }
+
+        /* Стили для формы регистрации */
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .form-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .form-label {
+            width: 150px;
+            font-weight: bold;
+        }
+        .form-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            min-width: 200px;
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 15px;
+        }
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .select-box {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            min-width: 200px;
+        }
+        .textarea {
+            flex: 1;
+            height: 80px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            min-width: 200px;
+        }
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .cancel-button {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Стили для валидации */
+        .error {
+            border-color: #ff4444 !important;
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+        }
+        .error-message {
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 5px;
+            width: 100%;
+            padding-left: 150px;
+            display: none;
+        }
+        .valid {
+            border-color: #00C851 !important;
+        }
+        .hint {
+            position: absolute;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-top: 5px;
+            z-index: 100;
+            display: none;
+        }
+        .input-container {
+            position: relative;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Основная часть задания -->
+    <div style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        <!-- 1. Фамилия Имя Отчество -->
+        <p id="fio">Кирилюк Ангелина Сергеевна</p>
+        
+        <!-- 2. Ссылка на любимый сайт -->
+        <a href="https://www.wildberries.ru/" target="_blank" id="wbLink">Мой любимый сайт - Wildberries</a>
+        
+        <!-- 3. Любое изображение -->
+        <br>
+        <img src="картинка.jpg" alt="Пример изображения" id="originalImage" onclick="copyImage()">
+        
+        <!-- Кнопка для вставки -->
+        <button id="insertBtn" onclick="insertImage()">Вставить копию после ФИО</button>
+    </div>
+
+    <!-- Форма регистрации пользователя с валидацией -->
+    <div class="form-container">
+        <div class="form-title">Форма регистрации пользователя</div>
+        
+        <form id="registrationForm">
+            <div class="form-row">
+                <div class="form-label">Ваше имя:</div>
+                <div class="input-container">
+                    <input type="text" class="form-input" id="userName" name="userName" 
+                           required minlength="2" maxlength="30"
+                           title="Имя должно содержать от 2 до 30 символов">
+                    <div class="error-message" id="nameError">Поле обязательно для заполнения (2-30 символов)</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Пароль:</div>
+                <div class="input-container">
+                    <input type="password" class="form-input" id="password" name="password" 
+                           required minlength="6" maxlength="20"
+                           pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,20}$"
+                           title="Пароль должен содержать 6-20 символов, включая буквы и цифры">
+                    <div class="error-message" id="passwordError">Пароль должен содержать 6-20 символов (буквы и цифры)</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Возраст:</div>
+                <div class="input-container">
+                    <input type="number" class="form-input" id="age" name="age" 
+                           min="18" max="99" required
+                           title="Возраст должен быть от 18 до 99 лет">
+                    <div class="error-message" id="ageError">Введите возраст от 18 до 99 лет</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Пол:</div>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="male" name="gender" value="male" required>
+                        <label for="male">Мужской</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Женский</label>
+                    </div>
+                </div>
+                <div class="error-message" id="genderError">Выберите пол</div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Ваши увлечения:</div>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="music" name="hobby" value="music">
+                        <label for="music">Музыка</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="video" name="hobby" value="video">
+                        <label for="video">Видео</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="drawing" name="hobby" value="drawing">
+                        <label for="drawing">Рисование</label>
+                    </div>
+                </div>
+                <div class="error-message" id="hobbyError">Выберите хотя бы одно увлечение</div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Ваша страна:</div>
+                <div class="input-container">
+                    <select class="select-box" id="country" name="country" required>
+                        <option value="">Выберите страну</option>
+                        <option value="ru">Россия</option>
+                        <option value="by">Беларусь</option>
+                        <option value="kz">Казахстан</option>
+                    </select>
+                    <div class="error-message" id="countryError">Выберите страну</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Ваш город:</div>
+                <div class="input-container">
+                    <select class="select-box" id="city" name="city" required>
+                        <option value="">Выберите город</option>
+                        <!-- Города будут заполняться динамически -->
+                    </select>
+                    <div class="error-message" id="cityError">Выберите город</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Кратко о себе:</div>
+                <div class="input-container">
+                    <textarea class="textarea" id="about" name="about" maxlength="500"></textarea>
+                    <div class="error-message" id="aboutError">Максимальная длина - 500 символов</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Решите пример:</div>
+                <div class="input-container">
+                    <div id="mathQuestion">Сколько будет 2 + 2?</div>
+                    <input type="text" class="form-input" id="mathAnswer" name="mathAnswer" required
+                           title="Решите простой математический пример">
+                    <div class="error-message" id="mathError">Введите правильный ответ</div>
+                </div>
+            </div>
+            
+            <div class="button-row">
+                <button type="button" class="button cancel-button" onclick="resetForm()">Отменить ввод</button>
+                <button type="submit" class="button submit-button">Данные подтверждаю</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // 1. Получить информацию о ширине документа в пикселях
+        const documentWidth = document.documentElement.scrollWidth;
+        
+        // 2. Вывести информацию однократно через 5 секунд после запуска страницы
+        setTimeout(() => {
+            console.log(`Ширина документа: ${documentWidth}px`);
+            alert(`Ширина документа: ${documentWidth}px`);
+        }, 5000);
+        
+        // 3. Выводить информацию о процессоре каждые 4 секунды
+        setInterval(() => {
+            alert("Тип процессора: Intel(R) Core(TM) i3");
+        }, 4000);
+        
+        let copiedImage = null;
+        
+        function copyImage() {
+            // Создаем копию изображения
+            const original = document.getElementById('originalImage');
+            copiedImage = original.cloneNode(true);
+            copiedImage.onclick = null;
+            
+            // Показываем кнопку "Вставить"
+            document.getElementById('insertBtn').style.display = 'inline-block';
+            
+            alert('Изображение скопировано! Теперь нажмите кнопку "Вставить"');
+        }
+        
+        function insertImage() {
+            if (copiedImage) {
+                // Вставляем копию после элемента с ФИО
+                const fioElement = document.getElementById('fio');
+                const wbLink = document.getElementById('wbLink');
+                fioElement.parentNode.insertBefore(copiedImage, wbLink);
+                
+                // Скрываем кнопку
+                document.getElementById('insertBtn').style.display = 'none';
+                
+                // Убираем выделение
+                copiedImage = null;
+            }
+        }
+        
+        // Валидация формы
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            const countrySelect = document.getElementById('country');
+            const citySelect = document.getElementById('city');
+            
+            // Динамическое заполнение городов в зависимости от страны
+            countrySelect.addEventListener('change', function() {
+                citySelect.innerHTML = '<option value="">Выберите город</option>';
+                
+                const cities = {
+                    'ru': ['Москва', 'Санкт-Петербург', 'Новосибирск'],
+                    'by': ['Минск', 'Гомель', 'Брест'],
+                    'kz': ['Алматы', 'Нур-Султан', 'Шымкент']
+                };
+                
+                if (this.value && cities[this.value]) {
+                    cities[this.value].forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city.toLowerCase();
+                        option.textContent = city;
+                        citySelect.appendChild(option);
+                    });
+                }
+            });
+            
+            // Валидация при вводе
+            form.querySelectorAll('input, select, textarea').forEach(element => {
+                element.addEventListener('input', function() {
+                    validateField(this);
+                });
+                
+                element.addEventListener('blur', function() {
+                    validateField(this);
+                });
+            });
+            
+            // Валидация формы при отправке
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                const fields = form.querySelectorAll('input, select, textarea');
+                
+                fields.forEach(field => {
+                    if (!validateField(field)) {
+                        isValid = false;
+                    }
+                });
+                
+                // Специальная проверка для чекбоксов
+                const hobbies = form.querySelectorAll('input[name="hobby"]:checked');
+                if (hobbies.length === 0) {
+                    document.getElementById('hobbyError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('hobbyError').style.display = 'none';
+                }
+                
+                // Проверка математического примера
+                const mathAnswer = document.getElementById('mathAnswer');
+                if (mathAnswer.value !== '4') {
+                    mathAnswer.classList.add('error');
+                    document.getElementById('mathError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    mathAnswer.classList.remove('error');
+                    document.getElementById('mathError').style.display = 'none';
+                }
+                
+                if (isValid) {
+                    alert('Форма успешно отправлена!');
+                    form.reset();
+                } else {
+                    alert('Пожалуйста, исправьте ошибки в форме.');
+                }
+            });
+            
+            // Функция валидации отдельного поля
+            function validateField(field) {
+                const errorElement = document.getElementById(field.id + 'Error');
+                
+                if (!errorElement) return true;
+                
+                if (field.required && !field.value.trim()) {
+                    field.classList.add('error');
+                    errorElement.style.display = 'block';
+                    return false;
+                }
+                
+                if (field.minlength && field.value.length < field.minlength) {
+                    field.classList.add('error');
+                    errorElement.style.display = 'block';
+                    return false;
+                }
+                
+                if (field.maxlength && field.value.length > field.maxlength) {
+                    field.classList.add('error');
+                    errorElement.style.display = 'block';
+                    return false;
+                }
+                
+                if (field.type === 'number' && (field.value < field.min || field.value > field.max)) {
+                    field.classList.add('error');
+                    errorElement.style.display = 'block';
+                    return false;
+                }
+                
+                if (field.pattern && !new RegExp(field.pattern).test(field.value)) {
+                    field.classList.add('error');
+                    errorElement.style.display = 'block';
+                    return false;
+                }
+                
+                field.classList.remove('error');
+                errorElement.style.display = 'none';
+                return true;
+            }
+        });
+        
+        // Сброс формы
+        function resetForm() {
+            document.getElementById('registrationForm').reset();
+            document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+        }
+    </script>
+</body>
+</html>

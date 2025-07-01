@@ -1,0 +1,182 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, #f4f4f9, #dce7fa);
+    color: #333;
+    animation: backgroundAnimation 5s infinite alternate; /* Анимация смены градиента */
+}
+
+/* Анимация фона */
+@keyframes backgroundAnimation {
+    0% {
+        background: linear-gradient(90deg, #f4f4f9, #dce7fa);
+    }
+    50% {
+        background: linear-gradient(90deg, #ffe5d9, #ffc6c7);
+    }
+    100% {
+        background: linear-gradient(90deg, #f4f4f9, #dce7fa);
+    }
+}
+
+/* Шапка */
+header {
+    background: linear-gradient(45deg, #0056b3, #002f6c);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.3)); /* Фильтр тени */
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+/* Навигация */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(90deg, #004494, #003060);
+    animation: navGradient 3s infinite alternate;
+}
+
+@keyframes navGradient {
+    0% {
+        background: linear-gradient(90deg, #004494, #003060);
+    }
+    100% {
+        background: linear-gradient(90deg, #0056b3, #002f6c);
+    }
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: transform 0.3s ease; /* Анимация при наведении */
+}
+
+nav ul li a:hover {
+    transform: scale(1.1); /* Увеличение элемента при наведении */
+    background-color: #ff7f50;
+    border-radius: 5px;
+}
+
+/* Основной контент */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Заголовки секций */
+section h2 {
+    color: #0056b3;
+    background: linear-gradient(to right, #dce7fa, #b3cde0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Градиент для текста */
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* Таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1)); /* Фильтр тени */
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+    transition: background-color 0.3s ease;
+}
+
+table th {
+    background-color: #f4f4f9;
+}
+
+table td:hover {
+    background-color: #dce7fa;
+}
+
+/* Анимация для изображений */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Плавное изменение */
+}
+
+img:hover {
+    transform: scale(1.05); /* Увеличение изображения */
+    filter: brightness(110%) contrast(105%); /* Изменение яркости и контраста */
+}
+
+/* Формы */
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    box-shadow: 0 0 8px rgba(0, 86, 179, 0.5); /* Подсветка на фокусе */
+    transform: scale(1.01);
+}
+
+input[type="submit"] {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    width: auto;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #003f8a;
+    transform: scale(1.05);
+}
+
+/* Подвал */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9em;
+    color: white;
+    background: linear-gradient(to right, #0056b3, #002f6c);
+    animation: footerAnimation 5s infinite alternate; /* Анимация градиента */
+}
+
+@keyframes footerAnimation {
+    0% {
+        background: linear-gradient(to right, #0056b3, #002f6c);
+    }
+    100% {
+        background: linear-gradient(to right, #002f6c, #0056b3);
+    }
+}
